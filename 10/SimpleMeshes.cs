@@ -156,22 +156,18 @@ namespace Fusee.Tutorial.Core
 
         public static MeshComponent CreateCylinder(float radius, float height, int segments)
         {   
-            float3[] verts = new float3[4 * segments+1];
-            float3[] norms = new float3[4 * segments];
-            ushort[] tris = new ushort[segments * 4 * 3];
+            float3[] verts = new float3[5 * segments+1];
+            float3[] norms = new float3[5 * segments];
+            ushort[] tris = new ushort[segments * 5 * 3];
                                                                 
             verts[0] = new float3(radius, height/2, 0);
-
             verts[segments] = new float3(0, height/2, 0);   
-
             verts[2 * segments] = new float3(radius, height/2, 0);   
             verts[3 * segments] = new float3(radius, -height/2, 0);  
-            verts[4 * segments] = new float3(0, -height/2, 0);      
+            verts[5 * segments] = new float3(0, -height/2, 0);      
 
             norms[0] = new float3(0, 1, 0);
-
             norms[segments] = new float3(0, 1, 0);
-
             norms[2 * segments] = new float3(1, 0, 0);
             norms[3 * segments] = new float3(1, 0, 0);
 
@@ -195,7 +191,7 @@ namespace Fusee.Tutorial.Core
                 tris[(i-1)*3+0] = (ushort) (i-1);
                 tris[(i-1)*3+1] = (ushort) i;
                 tris[(i-1)*3+2] = (ushort) segments;
-
+                
                 tris[(i-1)*3+9*segments+0] = (ushort) (3*segments+i-1);
                 tris[(i-1)*3+9*segments+1] = (ushort) (3*segments+i);
                 tris[(i-1)*3+9*segments+2] = (ushort) (4*segments);     
